@@ -14,6 +14,10 @@
     input {
       margin: 10px;
     }
+
+    body {
+        background-color:dimgray;
+    }
   </style>
 </head>
 
@@ -26,7 +30,7 @@
     <div id="buttons-view"></div>
 
     <form id="hero-form">
-      <label for="hero-input">Add a SuperHero!</label>
+      <label for="hero-input"><strong>Add a SuperHero!</strong></label>
       <input type="text" id="hero-input">
       <br>
 
@@ -68,12 +72,12 @@
 
                     var personImage = $("<img>");
 
-                    personImage.attr("src", results[i].images.fixed_height.url);
-                //     personImage.attr('src', results[i].images.fixed_height_still.url);
-	            //  personImage.attr('data-still', results[i].images.fixed_height_still.url);
-	            //  personImage.attr('data-animate', results[i].images.fixed_height.url);
-	            //  personImage.attr('data-state', 'still');
-	            //  personImage.addClass('personImage');
+                    // personImage.attr("src", results[i].images.fixed_height.url);
+                 personImage.attr("src", results[i].images.fixed_height_still.url);
+	             personImage.attr("data-still", results[i].images.fixed_height_still.url);
+	             personImage.attr("data-animate", results[i].images.fixed_height.url);
+	             personImage.attr("data-state", "still");
+	             personImage.addClass("personImage");
 
                     heroDiv.append(pOne);
                     heroDiv.append(personImage);

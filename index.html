@@ -1,124 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
 
-        <!DOCTYPE html>
-        <html lang="en">
-        
-        <head>
-          <meta charset="utf-8">
-          <title>Stop: It's Giphy time</title>
-        </head>
-        
-        <body>
-          <img src="https://media1.giphy.com/media/3o85xkQpyMlnBkpB9C/200_s.gif" data-still="https://media1.giphy.com/media/3o85xkQpyMlnBkpB9C/200_s.gif" data-animate="https://media1.giphy.com/media/3o85xkQpyMlnBkpB9C/200.gif" data-state="still" class="gif">
-          <img src="https://media2.giphy.com/media/8rFQp4kHXJ0gU/200_s.gif" data-still="https://media2.giphy.com/media/8rFQp4kHXJ0gU/200_s.gif" data-animate="https://media2.giphy.com/media/8rFQp4kHXJ0gU/200.gif" data-state="still" class="gif">
-          <img src="https://media3.giphy.com/media/W6LbnBigDe4ZG/200_s.gif" data-still="https://media3.giphy.com/media/W6LbnBigDe4ZG/200_s.gif" data-animate="https://media3.giphy.com/media/W6LbnBigDe4ZG/200.gif" data-state="still" class="gif">
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-          <script type="text/javascript">
-            $(".gif").on("click", function() {
-              // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
-              var state = $(this).attr("data-state");
-              // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-              // Then, set the image's data-state to animate
-              // Else set src to the data-still value
-              if (state === "still") {
-                $(this).attr("src", $(this).attr("data-animate"));
-                $(this).attr("data-state", "animate");
-              } else {
-                $(this).attr("src", $(this).attr("data-still"));
-                $(this).attr("data-state", "still");
-              }
-            });
-          </script>
-        </body>
-        
-        </html>
-        
-  <!-- <button data-person="Batman">
-    Batman
-  </button>
-  <button data-person="Superman">
-    Superman
-  </button>
-  <button data-person="Aquaman">
-    Aquaman
-  </button>
-  <button data-person="Wonder Woman">
-    Wonder Woman
-  </button>
-  <button data-person="The Flash">
-    The Flash.
-  </button>
-  <button data-person="Black Panther">
-     Black Panther
-    </button>
-    <button data-person="Thor">
-      Thor
-    </button>
-    <button data-person="Spider-Mman">
-      Spider-Man
-    </button>
-    <button data-person="Iron Man">
-      Iron Man
-    </button>
-    <button data-person="Capitan America">
-      Capitan America
-    </button>
+<head>
+  <meta charset="utf-8">
+  <title>Favorite SuperHero</title>
+  <style type="text/css">
+    button {
+        margin : 5px;
+        background-color:gold;
+    }
+    div
+    form,
+    input {
+      margin: 10px;
+    }
 
-  <div id="gifs-appear-here">
-  </div>
+    body {
+        background-color:dimgray;
+    }
+  </style>
+</head>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    // Event listener for all button elements
-    $("button").on("click", function() {
-      // In this case, the "this" keyword refers to the button that was clicked
-      var person = $(this).attr("data-person");
+<body>
 
-      // Constructing a URL to search Giphy for the name of the person who said the quote
-      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        person + "&api_key=dc6zaTOxFJmzC&limit=10";
+  <div class="container">
+    <h1>SuperHero Search</h1>
 
-      // Performing our AJAX GET request
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
-        // After the data comes back from the API
-        .then(function(response) {
-          // Storing an array of results in the results variable
-          var results = response.data;
+    <!-- Rendered Buttons will get Dumped Here  -->
+    <div id="buttons-view"></div>
 
-          // Looping over every result item
-          for (var i = 0; i < results.length; i++) {
+    <form id="hero-form">
+      <label for="hero-input"><strong>Add a SuperHero!</strong></label>
+      <input type="text" id="hero-input">
+      <br>
 
-            // Only taking action if the photo has an appropriate rating
-            if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
-              // Creating a div for the gif
-              var gifDiv = $("<div>");
+      <!-- Button triggers new movie to be added -->
+      <input id="add-hero" type="submit" value="Add a SuperHero!">
+    </form>
 
-              // Storing the result item's rating
-              var rating = results[i].rating;
+    <!-- Movies will Get Dumped Here -->
+    <div id="hero-view"></div>
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/script.js"></script>
+    
+   
 
-              // Creating a paragraph tag with the result item's rating
-              var p = $("<p>").text("Rating: " + rating);
-
-              // Creating an image tag
-              var personImage = $("<img>");
-
-              // Giving the image tag an src attribute of a proprty pulled off the
-              // result item
-              personImage.attr("src", results[i].images.fixed_height.url);
-
-              // Appending the paragraph and personImage we created to the "gifDiv" div we created
-              gifDiv.append(p);
-              gifDiv.append(personImage);
-
-              // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
-              $("#gifs-appear-here").prepend(gifDiv);
-            }
-          }
-        });
-    });
-  </script> -->
 </body>
 
 </html>
